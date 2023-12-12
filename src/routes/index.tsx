@@ -1,7 +1,5 @@
-const Index = () => {
-	<p>
-		Hello, world!
-	</p>
-}
+const Index = () => (
+    <p>Hello, Index!</p>
+)
 
-export default Index
+export default Index;
