@@ -1,3 +1,16 @@
+:root {
+	background-color: dodgerblue;
+	color: antiquewhite;
+}
+
+button {
+	background-color: goldenrod;
+	border-style: none;
+	border-radius: 4px;
+	margin: 0 4px;
+	padding: 12px;
+}
+
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

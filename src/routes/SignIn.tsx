@@ -1,4 +1,12 @@
-import { ActionFunctionArgs, Form, useActionData } from "react-router-dom"
+import {
+	ActionFunctionArgs,
+	Form,
+	redirect,
+	useActionData,
+} from "react-router-dom"
+import styles from "./signin.module.css"
+import auth from "../lib/auth"
+import { ActionData } from "../types"
 
 export const action = async (args: ActionFunctionArgs) => {
 	const { request } = args
@@ -23,14 +31,16 @@ export const action = async (args: ActionFunctionArgs) => {
 	}
 
 	const { token } = await response.json()
-	console.log(token)
+	// console.log(token)
 
-	return null
+	auth.signIn(token)
+
+	return redirect("/")
 }
 
 const SignIn = () => {
 	//fångar action, undefined innan action körs
-	const error = useActionData() as { message: string } | undefined
+	const error = useActionData() as ActionData
 
 	return (
 		<div>
@@ -52,7 +62,9 @@ const SignIn = () => {
 				</div>
 
 				<div>
-					<button type="submit">Sign In</button>
+					<button type="submit" className={styles.button}>
+						Sign In
+					</button>
 				</div>
 			</Form>
 		</div>
