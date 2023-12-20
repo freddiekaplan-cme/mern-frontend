@@ -18,4 +18,5 @@ export type Post = {
 		userName: string
 	}
 	comments?: Comment[]
+	score: number
 }

@@ -9,6 +9,8 @@ import ShowPost, { loader as showPostLoader } from "./routes/ShowPost.tsx"
 import SignUp, { action as signUpAction } from "./routes/SignUp.tsx"
 import SignIn, { action as signInAction } from "./routes/SignIn.tsx"
 import CreatePost, { action as createPostAction } from "./routes/CreatePost.tsx"
+import { action as createCommentAction } from "./components/CommentForm.tsx"
+import { action as voteAction } from "./components/Vote.tsx"
 import "./index.css"
 
 const router = createBrowserRouter([
@@ -50,6 +52,14 @@ const router = createBrowserRouter([
 						path: "create-post",
 						action: createPostAction,
 						element: <CreatePost />,
+					},
+					{
+						path: "/posts/:postId/comments",
+						action: createCommentAction,
+					},
+					{
+						path: "/posts/:postId/vote",
+						action: voteAction,
 					},
 				],
 			},

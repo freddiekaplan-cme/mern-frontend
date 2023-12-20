@@ -1,5 +1,6 @@
 import { Link, LoaderFunctionArgs, useLoaderData } from "react-router-dom"
 import { Post } from "../types"
+import CommentForm from "../components/CommentForm"
 
 export const loader = async (args: LoaderFunctionArgs) => {
 	const { id } = args.params
@@ -43,6 +44,7 @@ const ShowPost = () => {
 					)}
 				</div>
 			</div>
+			<CommentForm postId={post._id} />
 			{post.comments?.map((comment) => (
 				<p key={comment._id}>
 					{comment.body} - {comment.author.userName}
