@@ -1,6 +1,7 @@
 import { Link, useFetcher } from "react-router-dom"
 import style from "./Header.module.css"
 import auth from "../../lib/auth"
+import logopic from "../../assets/freddie_small.png"
 
 const Header = () => {
 	const isAuthenticated = auth.isSignedIn()
@@ -8,7 +9,17 @@ const Header = () => {
 
 	return (
 		<div className={style.header}>
-			<h1>Freddit</h1>
+			<div className={style.logoTitleContainer}>
+				<Link to="/" className={style.title}>
+					<div className={style.logo}>
+						<img src={logopic} className={style.img} />
+					</div>
+				</Link>
+				<Link to="/" className={style.title}>
+					<h1>freddit</h1>
+				</Link>
+			</div>
+
 			<div className={style.headerActions}>
 				{isAuthenticated ? (
 					<>

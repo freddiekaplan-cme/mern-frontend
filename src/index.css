@@ -1,6 +1,7 @@
-:root {
-	background-color: dodgerblue;
+body {
+	background-color: rgb(21, 87, 153);
 	color: antiquewhite;
+	margin: 0;
 }
 
 button {
@@ -9,6 +10,10 @@ button {
 	border-radius: 4px;
 	margin: 0 4px;
 	padding: 12px;
+}
+
+button:hover {
+	background-color: gold;
 }
 
 /* :root {
