@@ -29,7 +29,7 @@ return {
     posts: await response.json()
 }
 */
-export const Index = () => {
+const Index = () => {
 	const data = useLoaderData() as {
 		posts: Post[]
 		totalPages: number
@@ -52,3 +52,5 @@ export const Index = () => {
 		</div>
 	)
 }
+
+export default Index
