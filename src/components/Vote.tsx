@@ -36,8 +36,6 @@ const VoteComponent = ({ post }: { post: Post }) => {
 	const searchParams = new URLSearchParams(location.search)
 	const returnTo = location.pathname + "?" + searchParams.toString()
 
-	console.log(post.score)
-
 	return (
 		<div>
 			<Form method="post" action={`/posts/${post._id}/vote`}>

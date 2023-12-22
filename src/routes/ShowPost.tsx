@@ -1,6 +1,7 @@
 import { Link, LoaderFunctionArgs, useLoaderData } from "react-router-dom"
 import { Post } from "../types"
 import CommentForm from "../components/CommentForm"
+import style from "./showpost.module.css"
 
 export const loader = async (args: LoaderFunctionArgs) => {
 	const { id } = args.params
@@ -24,8 +25,8 @@ const ShowPost = () => {
 
 	return (
 		<>
-			<div className="">
-				<div className="">
+			<div className={style.container}>
+				<div className={style.link}>
 					{post.link ? (
 						<Link to={post.link}>
 							<h2>
@@ -38,7 +39,7 @@ const ShowPost = () => {
 					)}
 					<p>by {post.author.userName}</p>
 					{post.body && (
-						<div className="">
+						<div className={style.link}>
 							<p>{post.body}</p>
 						</div>
 					)}
