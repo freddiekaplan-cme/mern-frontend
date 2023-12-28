@@ -26,3 +26,4 @@ dist-ssr
 # My files
 .env
 .prettierrc
+vite.config.ts.timestamp*

@@ -30,16 +30,15 @@ export const action = async (args: ActionFunctionArgs) => {
 		return { message }
 	}
 
-	const { token } = await response.json()
-	// console.log(token)
+	const { token, userId } = await response.json()
 
-	auth.signIn(token)
+	auth.signIn(token, userId)
+	console.log(userId)
 
 	return redirect("/")
 }
 
 const SignIn = () => {
-	//fångar action, undefined innan action körs
 	const error = useActionData() as ActionData
 
 	return (

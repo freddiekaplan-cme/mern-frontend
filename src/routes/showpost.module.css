@@ -4,3 +4,19 @@ a:hover,
 a:active {
 	color: antiquewhite;
 }
+
+.title {
+	margin-bottom: 8px;
+	margin-top: 12px;
+}
+
+.commentAuthor {
+	font-size: 10px;
+	margin: 16px 0 4px 0;
+}
+
+.deleteButton {
+	font-size: 10px;
+	margin: 4px 0;
+	padding: 4px;
+}

@@ -1,0 +1,14 @@
+.textarea {
+	background-color: antiquewhite;
+	border-style: none;
+	height: 5rem;
+	width: 100%;
+}
+
+.button {
+	margin: 12px 0;
+}
+
+.title {
+	margin-bottom: 8px;
+}

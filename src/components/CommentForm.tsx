@@ -2,6 +2,7 @@ import { ActionFunctionArgs, useFetcher } from "react-router-dom"
 import auth from "../lib/auth"
 import { Post } from "../types"
 import { useRef } from "react"
+import style from "./comentform.module.css"
 
 export const action = async (args: ActionFunctionArgs) => {
 	const { postId } = args.params
@@ -32,6 +33,36 @@ export const action = async (args: ActionFunctionArgs) => {
 	}
 }
 
+export const deleteComment = async (postId: string, commentId: string) => {
+	try {
+		const response = await fetch(
+			import.meta.env.VITE_BACKEND_URL +
+				"/posts/" +
+				postId +
+				"/comments/" +
+				commentId,
+			{
+				headers: {
+					Authorization: "Bearer " + auth.getJWT(),
+				},
+				method: "DELETE",
+			},
+		)
+
+		if (!response.ok) {
+			const { message } = await response.json()
+			throw new Error(message)
+		}
+
+		const post = (await response.json()) as Post
+
+		return post.comments
+	} catch (error) {
+		console.error("Error deleting comment: ", error)
+		throw error
+	}
+}
+
 const CommentForm = ({ postId }: { postId: string }) => {
 	const fetcher = useFetcher({ key: "comment-form-" + postId })
 	const textAreaRef = useRef<HTMLTextAreaElement>(null)
@@ -42,10 +73,11 @@ const CommentForm = ({ postId }: { postId: string }) => {
 
 	return (
 		<div>
-			<h3>Leave a comment</h3>
+			<h3 className={style.title}>Leave a comment</h3>
 			<fetcher.Form method="post" action={`/posts/${postId}/comments`}>
 				<div>
 					<textarea
+						className={style.textarea}
 						ref={textAreaRef}
 						name="body"
 						id="body"
@@ -53,7 +85,9 @@ const CommentForm = ({ postId }: { postId: string }) => {
 					></textarea>
 				</div>
 				<div>
-					<button type="submit">Post a comment</button>
+					<button className={style.button} type="submit">
+						Post a comment
+					</button>
 				</div>
 			</fetcher.Form>
 		</div>
