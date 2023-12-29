@@ -1,14 +1,8 @@
-import {
-	Link,
-	LoaderFunctionArgs,
-	useLoaderData,
-	redirect,
-} from "react-router-dom"
+import { Form, Link, LoaderFunctionArgs, useLoaderData } from "react-router-dom"
 import { Post } from "../types"
 import CommentForm from "../components/CommentForm"
 import style from "./showpost.module.css"
 import auth from "../lib/auth"
-import { deleteComment } from "../components/CommentForm"
 
 export const loader = async (args: LoaderFunctionArgs) => {
 	const { id } = args.params
@@ -25,15 +19,6 @@ export const loader = async (args: LoaderFunctionArgs) => {
 	const posts = await response.json()
 
 	return posts
-}
-
-const handleDeleteComment = async (postId: string, commentId: string) => {
-	try {
-		await deleteComment(postId, commentId)
-	} catch (error) {
-		return console.error("Error deleting comment: " + error)
-	}
-	return redirect(`/posts/${postId}`)
 }
 
 const ShowPost = () => {
@@ -71,14 +56,14 @@ const ShowPost = () => {
 					<div>{comment.body}</div>
 					{comment.author._id === auth.getUserId() && (
 						<div>
-							<button
-								className={style.deleteButton}
-								onClick={() =>
-									handleDeleteComment(post._id, comment._id)
-								}
+							<Form
+								method="delete"
+								action={`/posts/${post._id}/comments/${comment._id}/delete-comment`}
 							>
-								Delete comment
-							</button>
+								<button className={style.commentButton}>
+									Delete
+								</button>
+							</Form>
 						</div>
 					)}
 				</div>

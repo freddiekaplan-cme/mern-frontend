@@ -33,33 +33,35 @@ export const action = async (args: ActionFunctionArgs) => {
 	}
 }
 
-export const deleteComment = async (postId: string, commentId: string) => {
-	try {
-		const response = await fetch(
-			import.meta.env.VITE_BACKEND_URL +
-				"/posts/" +
-				postId +
-				"/comments/" +
-				commentId,
-			{
-				headers: {
-					Authorization: "Bearer " + auth.getJWT(),
-				},
-				method: "DELETE",
+export const updateComment = async (args: ActionFunctionArgs) => {
+	const { postId, commentId } = args.params
+	const formData = await args.request.formData()
+
+	const response = await fetch(
+		import.meta.env.VITE_BACKEND_URL +
+			"/posts/" +
+			postId +
+			"/comments/" +
+			commentId,
+		{
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: "Bearer " + auth.getJWT(),
 			},
-		)
+			method: "PUT",
+			body: JSON.stringify({ commentBody: formData.get("body") }),
+		},
+	)
 
-		if (!response.ok) {
-			const { message } = await response.json()
-			throw new Error(message)
-		}
+	if (!response.ok) {
+		const { message } = await response.json()
+		return { message }
+	}
 
-		const post = (await response.json()) as Post
+	const updatedPost = (await response.json()) as Post
 
-		return post.comments
-	} catch (error) {
-		console.error("Error deleting comment: ", error)
-		throw error
+	return {
+		comments: updatedPost.comments,
 	}
 }
 

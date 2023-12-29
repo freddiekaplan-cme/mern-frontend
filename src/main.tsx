@@ -14,6 +14,8 @@ import { action as createCommentAction } from "./components/CommentForm.tsx"
 import { action as voteAction } from "./components/Vote.tsx"
 import "./index.css"
 
+import { action as deleteCommentAction } from "./routes/DeleteComment.actions.ts"
+
 const router = createBrowserRouter([
 	{
 		path: "/",
@@ -57,6 +59,10 @@ const router = createBrowserRouter([
 					{
 						path: "/posts/:postId/comments",
 						action: createCommentAction,
+					},
+					{
+						path: "/posts/:postId/comments/:commentId/delete-comment",
+						action: deleteCommentAction,
 					},
 					{
 						path: "/posts/:postId/vote",
