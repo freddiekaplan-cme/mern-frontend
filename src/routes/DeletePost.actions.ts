@@ -2,15 +2,11 @@ import { ActionFunctionArgs, redirect } from "react-router-dom"
 import auth from "../lib/auth"
 
 export const action = async (args: ActionFunctionArgs) => {
-	const { postId, commentId } = args.params
+	const { postId } = args.params
 
 	try {
 		const response = await fetch(
-			import.meta.env.VITE_BACKEND_URL +
-				"/posts/" +
-				postId +
-				"/comments/" +
-				commentId,
+			import.meta.env.VITE_BACKEND_URL + "/posts/" + postId,
 			{
 				headers: {
 					Authorization: "Bearer " + auth.getJWT(),
@@ -24,9 +20,9 @@ export const action = async (args: ActionFunctionArgs) => {
 			throw new Error(message)
 		}
 
-		return redirect("/posts/" + postId)
+		return redirect("/")
 	} catch (error) {
-		console.error("Error deleting comment: " + error)
+		console.error("Error deleting post: " + error)
 		throw error
 	}
 }

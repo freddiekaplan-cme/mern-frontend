@@ -33,7 +33,6 @@ export const action = async (args: ActionFunctionArgs) => {
 	const { token, userId } = await response.json()
 
 	auth.signIn(token, userId)
-	console.log(userId)
 
 	return redirect("/")
 }

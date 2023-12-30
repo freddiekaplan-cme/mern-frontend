@@ -47,6 +47,13 @@ const ShowPost = () => {
 					)}
 				</div>
 			</div>
+
+			<div>
+				<Form method="delete" action={`/posts/${post._id}/delete-post`}>
+					<button className={style.commentButton}>Delete Post</button>
+				</Form>
+			</div>
+
 			<CommentForm postId={post._id} />
 			{post.comments?.map((comment) => (
 				<div key={comment._id}>

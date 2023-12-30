@@ -10,11 +10,11 @@ import SignIn, { action as signInAction } from "./routes/SignIn.tsx"
 import Index, { loader as indexLoader } from "./routes/RoutesIndex.tsx"
 import CreatePost from "./routes/CreatePost.tsx"
 import { action as createPostAction } from "./routes/CreatePost.actions.ts"
+import { action as deletePostAction } from "./routes/DeletePost.actions.ts"
 import { action as createCommentAction } from "./components/CommentForm.tsx"
+import { action as deleteCommentAction } from "./routes/DeleteComment.actions.ts"
 import { action as voteAction } from "./components/Vote.tsx"
 import "./index.css"
-
-import { action as deleteCommentAction } from "./routes/DeleteComment.actions.ts"
 
 const router = createBrowserRouter([
 	{
@@ -55,6 +55,10 @@ const router = createBrowserRouter([
 						path: "create-post",
 						action: createPostAction,
 						element: <CreatePost />,
+					},
+					{
+						path: "/posts/:postId/delete-post",
+						action: deletePostAction,
 					},
 					{
 						path: "/posts/:postId/comments",
