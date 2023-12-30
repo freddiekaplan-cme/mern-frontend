@@ -2,7 +2,7 @@ import { ActionFunctionArgs, useFetcher } from "react-router-dom"
 import auth from "../lib/auth"
 import { Post } from "../types"
 import { useRef } from "react"
-import style from "./comentform.module.css"
+import style from "./commentform.module.css"
 
 export const action = async (args: ActionFunctionArgs) => {
 	const { postId } = args.params

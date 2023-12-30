@@ -27,3 +27,4 @@ dist-ssr
 .env
 .prettierrc
 vite.config.ts.timestamp*
+trash

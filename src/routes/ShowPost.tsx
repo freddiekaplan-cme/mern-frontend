@@ -3,6 +3,7 @@ import { Post } from "../types"
 import CommentForm from "../components/CommentForm"
 import style from "./showpost.module.css"
 import auth from "../lib/auth"
+// import { useState } from "react"
 
 export const loader = async (args: LoaderFunctionArgs) => {
 	const { id } = args.params
@@ -18,11 +19,16 @@ export const loader = async (args: LoaderFunctionArgs) => {
 
 	const posts = await response.json()
 
+	if (!response.ok) {
+		throw new Error(`Failed to fetch post: ${response.statusText}`)
+	}
+
 	return posts
 }
 
 const ShowPost = () => {
 	const post = useLoaderData() as Post
+	// const [showUpdateForm, setShowUpdateForm] = useState<boolean>(false)
 
 	return (
 		<>
@@ -35,11 +41,6 @@ const ShowPost = () => {
 							{post.link}
 						</Link>
 					)}
-					{/* {image && (
-					<div>
-						
-					</div>
-)} */}
 					{post.body && (
 						<div className={style.link}>
 							<p>{post.body}</p>
@@ -47,13 +48,81 @@ const ShowPost = () => {
 					)}
 				</div>
 			</div>
+			{post.author._id === auth.getUserId() && (
+				<div className={style.updateDeleteButtonContainer}>
+					<div>
+						{/* {showUpdateForm && */}
+						<div className={style.container}>
+							<h2>Update post</h2>
+							<Form
+								method="PUT"
+								encType="multipart/form-data"
+								action={`/posts/${post._id}/update-post`}
+							>
+								<div className={style.title}>
+									<label htmlFor="title">Title</label>
+									<input
+										type="text"
+										name="title"
+										id="title"
+										required
+									/>
+								</div>
+								<div className={style.link}>
+									<label htmlFor="link">
+										Link (optional)
+									</label>
+									<input type="text" name="link" id="link" />
+								</div>
+								<div className={style.body}>
+									<label htmlFor="body">
+										Body (optional)
+									</label>
+									<textarea name="body" id="body" />
+								</div>
+								<div className={style.image}>
+									<label htmlFor="image">
+										Image (optional)
+									</label>
+									<input
+										type="file"
+										name="image"
+										id="image"
+										accept="image/*"
+									/>
+								</div>
+								<div>
+									<button type="submit">Update post</button>
+								</div>
+							</Form>
+						</div>
+					</div>
 
-			<div>
-				<Form method="delete" action={`/posts/${post._id}/delete-post`}>
-					<button className={style.commentButton}>Delete Post</button>
-				</Form>
-			</div>
-
+					<div>
+						{/* <Form
+						method="put"
+						action={`/posts/${post._id}/update-form`}
+					>
+						<button className={style.commentButton}>
+							Update Post
+						</button>
+					</Form> */}
+						{/* <Link to={`/posts/${post._id}/update-form`}>
+						<button className={style.commentButton}>
+							Update Post
+						</button>
+					</Link> */}
+						<Form
+							method="delete"
+							action={`/posts/${post._id}/delete-post`}
+						>
+							<button className={style.commentButton}>
+								Delete Post
+							</button>
+						</Form>
+					</div>
+				</div>
+			)}
 			<CommentForm postId={post._id} />
 			{post.comments?.map((comment) => (
 				<div key={comment._id}>
