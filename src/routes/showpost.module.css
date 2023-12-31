@@ -1,6 +1,10 @@
 .postContainer {
 	display: flex;
-	flex-direction: column;
+	justify-content: center;
+}
+
+.postContainer > * {
+	width: 500px;
 }
 
 a,
@@ -45,4 +49,9 @@ textarea {
 button,
 .updateButton {
 	margin-top: 12px;
+}
+
+.updateButtons {
+	display: flex;
+	gap: 12px;
 }

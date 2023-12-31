@@ -9,7 +9,7 @@ const PostListItem = ({ post }: { post: Post }) => {
 			<div className={style.container}>
 				<VoteComponent post={post} />
 				<div>
-					<Link to={`/posts/${post._id}`} className={style.noStyle}>
+					<Link to={`/posts/${post._id}`} className={style.title}>
 						<h2>{post.title}</h2>
 					</Link>
 

@@ -38,7 +38,7 @@ const VoteComponent = ({ post }: { post: Post }) => {
 	const returnTo = location.pathname + "?" + searchParams.toString()
 
 	return (
-		<div>
+		<div className={style.voteContainer}>
 			<Form method="post" action={`/posts/${post._id}/vote`}>
 				<input type="hidden" name="from" value={returnTo}></input>
 				<input type="hidden" name="vote" value="up"></input>

@@ -1,9 +1,9 @@
-.container {
+.appContainer {
 	padding: 12px 48px;
 }
 
 @media screen and (max-width: 768px) {
-	.container {
+	.appContainer {
 		padding: 12px;
 	}
 }

@@ -6,7 +6,7 @@ function App() {
 	return (
 		<>
 			<Header />
-			<div className={style.container}>
+			<div className={style.appContainer}>
 				<Outlet />
 			</div>
 		</>

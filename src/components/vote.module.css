@@ -1,3 +1,9 @@
+.voteContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
 .score {
 	align-items: center;
 	display: flex;
