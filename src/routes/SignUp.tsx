@@ -45,7 +45,7 @@ const SignUp = () => {
 	const error = useActionData() as ActionData
 
 	return (
-		<div>
+		<div className={styles.container}>
 			<h2>Create a new account</h2>
 			<Form method="post">
 				{error && (

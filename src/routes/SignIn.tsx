@@ -42,7 +42,7 @@ const SignIn = () => {
 	const error = useActionData() as ActionData
 
 	return (
-		<div>
+		<div className={styles.container}>
 			<h2>Sign in to your account</h2>
 			<Form method="post">
 				{error && (
