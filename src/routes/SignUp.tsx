@@ -1,10 +1,12 @@
 import {
 	ActionFunctionArgs,
 	Form,
+	Link,
 	redirect,
 	useActionData,
 } from "react-router-dom"
 import { ActionData } from "../types"
+import styles from "./signup.module.css"
 
 export const action = async (args: ActionFunctionArgs) => {
 	const { request } = args
@@ -40,7 +42,6 @@ export const action = async (args: ActionFunctionArgs) => {
 }
 
 const SignUp = () => {
-	//fångar action, undefined innan action körs
 	const error = useActionData() as ActionData
 
 	return (
@@ -58,14 +59,19 @@ const SignUp = () => {
 				</div>
 				<div>
 					<label htmlFor="password">Password</label>
-					<input type="text" name="password" id="password" required />
+					<input
+						type="password"
+						name="password"
+						id="password"
+						required
+					/>
 				</div>
 				<div>
 					<label htmlFor="password_confirmation">
 						Password Confirmation
 					</label>
 					<input
-						type="text"
+						type="password"
 						name="password_confirmation"
 						id="password_confirmation"
 						required
@@ -75,6 +81,10 @@ const SignUp = () => {
 					<button type="submit">Create User</button>
 				</div>
 			</Form>
+			<div className={styles.signIn}>Already have an account?</div>
+			<Link to="/sign-in">
+				<button className={styles.button}>Sign in</button>
+			</Link>
 		</div>
 	)
 }

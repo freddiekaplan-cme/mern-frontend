@@ -1,4 +1,4 @@
-import { ActionFunctionArgs, useFetcher } from "react-router-dom"
+import { ActionFunctionArgs, Link, useFetcher } from "react-router-dom"
 import auth from "../lib/auth"
 import { Post } from "../types"
 import { useRef } from "react"
@@ -87,9 +87,18 @@ const CommentForm = ({ postId }: { postId: string }) => {
 					></textarea>
 				</div>
 				<div>
-					<button className={style.button} type="submit">
-						Post a comment
-					</button>
+					{auth.isSignedIn() && (
+						<button className={style.button} type="submit">
+							Post a comment
+						</button>
+					)}
+					{!auth.isSignedIn() && (
+						<Link to="/sign-in">
+							<button className={style.button}>
+								Sign in to comment
+							</button>
+						</Link>
+					)}
 				</div>
 			</fetcher.Form>
 		</div>

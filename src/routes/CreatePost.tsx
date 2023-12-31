@@ -63,6 +63,7 @@ const CreatePost = () => {
 						name="image"
 						id="image"
 						accept="image/*"
+						className={style.imageInput}
 					/>
 				</div>
 				<div>

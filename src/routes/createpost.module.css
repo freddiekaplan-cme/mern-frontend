@@ -1,0 +1,15 @@
+input,
+textarea {
+	background-color: antiquewhite;
+	border-style: none;
+	height: 1.5rem;
+	width: 100%;
+}
+
+textarea {
+	height: 5rem;
+}
+
+.imageInput {
+	background-color: rgb(21, 87, 153);
+}

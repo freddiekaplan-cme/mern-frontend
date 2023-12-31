@@ -6,6 +6,7 @@ import {
 } from "react-router-dom"
 import { Post } from "../types"
 import auth from "../lib/auth"
+import style from "./vote.module.css"
 
 export const action = async (args: ActionFunctionArgs) => {
 	const { postId } = args.params
@@ -41,13 +42,17 @@ const VoteComponent = ({ post }: { post: Post }) => {
 			<Form method="post" action={`/posts/${post._id}/vote`}>
 				<input type="hidden" name="from" value={returnTo}></input>
 				<input type="hidden" name="vote" value="up"></input>
-				<button type="submit">↑</button>
+				<button className={style.button} type="submit">
+					↑
+				</button>
 			</Form>
-			<span>{post.score || 0}</span>
+			<div className={style.score}>{post.score || 0}</div>
 			<Form method="post" action={`/posts/${post._id}/vote`}>
 				<input type="hidden" name="from" value={returnTo}></input>
 				<input type="hidden" name="vote" value="down"></input>
-				<button type="submit">↓</button>
+				<button className={style.button} type="submit">
+					↓
+				</button>
 			</Form>
 		</div>
 	)

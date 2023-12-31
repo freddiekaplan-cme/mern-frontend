@@ -9,10 +9,8 @@ interface PaginatorProps {
 const Paginator = (prop: PaginatorProps) => {
 	const pages = Array.from({ length: prop.totalPages }, (_, i) => i + 1)
 
-	// const pages = Array.from(Array(prop.totalPages).keys()).map((i) => i + 1)
-
 	return (
-		<div>
+		<div className={style.pageContainer}>
 			{pages.map((page) => (
 				<button
 					key={page}

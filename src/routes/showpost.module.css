@@ -1,3 +1,8 @@
+.postContainer {
+	display: flex;
+	flex-direction: column;
+}
+
 a,
 a:visited,
 a:hover,
@@ -10,18 +15,34 @@ a:active {
 	margin-top: 12px;
 }
 
-.updateDeleteButtonContainer {
-	display: flex;
-	flex-direction: row;
-}
-
 .commentAuthor {
 	font-size: 10px;
 	margin: 16px 0 4px 0;
 }
 
-.commentButton {
+.interactButton {
 	font-size: 10px;
-	margin: 4px 0;
+	margin: 8px 0;
 	padding: 4px;
+}
+
+input,
+textarea {
+	background-color: antiquewhite;
+	border-style: none;
+	height: 1.5rem;
+	width: 100%;
+}
+
+textarea {
+	height: 5rem;
+}
+
+.imageInput {
+	background-color: rgb(21, 87, 153);
+}
+
+button,
+.updateButton {
+	margin-top: 12px;
 }

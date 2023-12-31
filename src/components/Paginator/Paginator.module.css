@@ -1,3 +1,11 @@
+.pageContainer {
+	display: flex;
+	flex-direction: row;
+	gap: 12px;
+	margin: 36px 0;
+	justify-content: center;
+}
+
 .active {
 	background-color: gold;
 }

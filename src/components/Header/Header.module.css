@@ -31,7 +31,11 @@
 .buttons {
 	display: flex;
 	flex-direction: row;
-	margin-left: 10px;
+	/* margin-left: 12px; */
+}
+
+.button {
+	margin-left: 12px;
 }
 
 .logoTitleContainer {

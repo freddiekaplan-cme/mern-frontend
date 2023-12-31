@@ -1,0 +1,20 @@
+.page {
+	display: flex;
+	justify-content: center;
+}
+.page > * {
+	width: 500px;
+}
+
+.container {
+	border-bottom: 2px solid antiquewhite;
+	display: flex;
+	flex-direction: row;
+	gap: 24px;
+	max-width: 500px;
+	padding: 24px 0;
+}
+
+.noStyle {
+	text-decoration: none;
+}

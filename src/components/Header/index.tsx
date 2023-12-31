@@ -25,21 +25,29 @@ const Header = () => {
 					<>
 						<div className={style.buttons}>
 							<Link to="/create-post">
-								<button>Post</button>
+								<button className={style.button}>Post</button>
 							</Link>
 							<fetcher.Form method="post" action="/sign-out">
-								<button type="submit">Sign Out</button>
+								<button className={style.button} type="submit">
+									Sign Out
+								</button>
 							</fetcher.Form>
 						</div>
 					</>
 				) : (
 					<>
-						<Link to="/sign-up">
-							<button>Sign up</button>
-						</Link>
-						<Link to="/sign-in">
-							<button>Sign in</button>
-						</Link>
+						<div className={style.buttons}>
+							<Link to="/sign-up">
+								<button className={style.button}>
+									Sign up
+								</button>
+							</Link>
+							<Link to="/sign-in">
+								<button className={style.button}>
+									Sign in
+								</button>
+							</Link>
+						</div>
 					</>
 				)}
 			</div>

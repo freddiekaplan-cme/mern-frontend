@@ -1,6 +1,7 @@
 import {
 	ActionFunctionArgs,
 	Form,
+	Link,
 	redirect,
 	useActionData,
 } from "react-router-dom"
@@ -56,7 +57,12 @@ const SignIn = () => {
 
 				<div>
 					<label htmlFor="password">Password</label>
-					<input type="text" name="password" id="password" required />
+					<input
+						type="password"
+						name="password"
+						id="password"
+						required
+					/>
 				</div>
 
 				<div>
@@ -65,6 +71,10 @@ const SignIn = () => {
 					</button>
 				</div>
 			</Form>
+			<div className={styles.signUp}>Don't have an account?</div>
+			<Link to="/sign-up">
+				<button className={styles.button}>Sign up</button>
+			</Link>
 		</div>
 	)
 }
